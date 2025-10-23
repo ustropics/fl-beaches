@@ -67,7 +67,7 @@ regions = [
     {"name": "SW Florida (shell & carbonate rich)",
      "color": "#E4A672", "lon_range": [-82.2, -81.0]},
 
-    {"name": "Central East (quartz-dominant, Daytona)",
+    {"name": "Central East (quartz-dominant)",
      "color": "#F8CBA6", "lon_range": [-81.0, -80.5]},
 
     {"name": "NE Florida (coquina & shell sand)",
@@ -112,25 +112,15 @@ for r in regions:
 # ---------------------------------------------------------
 # 6.5. Legend (region + description)
 # ---------------------------------------------------------
-legend_labels = [
-    ("Panhandle", "pure white quartz sand"),
-    ("Central Gulf", "quartz + shell mix"),
-    ("SW Florida", "shell & carbonate rich"),
-    ("Central East", "quartz-dominant (Daytona)"),
-    ("NE Florida", "coquina & shell sand"),
-    ("Southeast", "coral/organic carbonate sand"),
-]
-
 legend_patches = [
-    mpatches.Patch(color=r["color"],
-                   label=f"{lbl[0]} — {lbl[1]}")
-    for r, lbl in zip(regions, legend_labels)
+    mpatches.Patch(color=r["color"], label=r["name"])
+    for r in regions
 ]
 
 leg = ax.legend(
     handles=legend_patches,
     loc="lower left",
-    bbox_to_anchor=(0.02, 0.02),
+    bbox_to_anchor=(0.02, 0.05),
     fontsize=12,
     title="Florida Coastal Sand Composition by Region",
     title_fontsize=16,
